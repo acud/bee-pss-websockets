@@ -1,0 +1,19 @@
+~/go/src/github.com/ethersphere/bee/pkg/pss ±pss-ws⚡ » gd                                                                                                          [15/09/20| 3:07PM]
+diff --git a/pkg/api/pss.go b/pkg/api/pss.go
+index 291717aa..d0cfeba6 100644
+--- a/pkg/api/pss.go
++++ b/pkg/api/pss.go
+@@ -140,6 +140,13 @@ func (s *server) pumpWs(conn *websocket.Conn, t string) {
+                                return
+                        }
+ 
++               case <-time.After(10 * time.Second):
++                       err = conn.WriteMessage(websocket.BinaryMessage, []byte("message data"))
++                       if err != nil {
++                               s.Logger.Debugf("pss write to websocket: %v", err)
++                               return
++                       }
++
+                case <-s.quit:
+                        // shutdown
+                        err = conn.SetWriteDeadline(time.Now
