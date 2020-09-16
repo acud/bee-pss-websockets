@@ -6,6 +6,7 @@ Example code on how to use pss websockets with bee
 Checkout the repo, then:
 
 ```
+git clone https://github.com/acud/bee-pss-websockets.git && cd bee-pss-websockets
 npm i
 ```
 
